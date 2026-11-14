@@ -65,9 +65,11 @@ case "$mode" in
     else
       make_tap looptender "$head"
       brew trust --formula "$canonical"
+      brew info --json=v2 "$canonical"
       before="$(shasum -a 256 "$old_receipt")"
       # The legacy-owner transition is intentionally explicit, not tap metadata.
       if brew migrate looptender/tap/keepgoing > "$RUNNER_TEMP/migration-refusal.log" 2>&1; then
+        cat "$RUNNER_TEMP/migration-refusal.log"
         echo 'Expected Homebrew to refuse the cross-owner receipt migration.' >&2
         exit 1
       fi
