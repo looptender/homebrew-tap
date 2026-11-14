@@ -65,14 +65,12 @@ case "$mode" in
     else
       make_tap looptender "$head"
       brew trust --formula "$canonical"
-      brew info --json=v2 "$canonical"
       before="$(shasum -a 256 "$old_receipt")"
-      # The legacy-owner transition is intentionally explicit, not tap metadata.
-      if brew migrate looptender/tap/keepgoing > "$RUNNER_TEMP/migration-refusal.log" 2>&1; then
-        cat "$RUNNER_TEMP/migration-refusal.log"
-        echo 'Expected Homebrew to refuse the cross-owner receipt migration.' >&2
-        exit 1
-      fi
+      # Homebrew 7.0.12 prints the owner refusal but returns zero. Require
+      # its specific diagnostic AND unchanged receipt/Cellar state below.
+      migration_status=0
+      brew migrate looptender/tap/keepgoing > "$RUNNER_TEMP/migration-refusal.log" 2>&1 || migration_status=$?
+      echo "Unforced migration exit status: $migration_status"
       cat "$RUNNER_TEMP/migration-refusal.log"
       grep -F 'installed from connorburgess/tap' "$RUNNER_TEMP/migration-refusal.log"
       test "$(shasum -a 256 "$old_receipt")" = "$before"
