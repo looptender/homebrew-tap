@@ -25,6 +25,10 @@ All scenarios use real published archives and Homebrew-created receipts, not fab
 
 ## Evidence and limits
 
-Preparation validates Ruby/shell/YAML/JSON syntax, alias resolution on disk, unchanged published asset URLs/checksums and the developer-machine refusal guard. These checks do not establish a successful installation or upgrade. Hosted fixtures and strict audit remain unrun until the reviewed head is authorized for push/CI. No owner Homebrew checkout, receipt or executable was changed.
+[Run 43646291288](https://github.com/looptender/homebrew-tap/actions/runs/43646291288) passed all four scenarios on head `bfd9d4c801babb9a3d48487f8f72554f67aeecca` against base `cb3ff9ebdd4a4534042ef5bd070ad7c65b1d2c1e`, using Homebrew 7.0.12 on macOS 15 arm64. Fresh install plus strict online audit, old-name installation with canonical-formula trust, same-tap v0.2.0 upgrade and explicit legacy-owner migration/upgrade all passed. Each scenario verified the new receipt, both executable links/version outputs, formula tests and uninstall cleanup.
+
+The initial run exposed invalid duplicate alias/rename metadata and missing canonical-formula trust. The redundant alias file was removed; the rename mapping resolves old names. A subsequent diagnostic run established that Homebrew prints the owner refusal but exits zero; the fixture now requires its specific diagnostic plus unchanged receipt and destination state. These findings were corrected without dropping the refusal, receipt, executable or cleanup assertions.
+
+Local Ruby/shell/YAML/JSON syntax, rename metadata, unchanged published asset URLs/checksums and the developer-machine refusal guard also passed. No owner Homebrew checkout, receipt or executable was changed.
 
 Native Intel macOS and Linux installation/upgrade, pinned or unlinked kegs, colliding preexisting `looptender` packages, custom prefixes and arbitrary old receipts are not covered. Existing configurations, services, plugins and running loops are not migrated. No new CLI release or live rollout is included.
