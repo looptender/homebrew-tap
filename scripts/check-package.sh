@@ -14,6 +14,9 @@ case "${1:-}" in
   *) echo 'Expected fresh, alias, upgrade or legacy-upgrade.' >&2; exit 2 ;;
 esac
 
+brew --version
+uname -m
+
 baseline=cb3ff9ebdd4a4534042ef5bd070ad7c65b1d2c1e
 head="$(git -C "$GITHUB_WORKSPACE" rev-parse HEAD)"
 repository="$(brew --repository)"
