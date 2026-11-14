@@ -1,28 +1,28 @@
 class Keepgoing < Formula
   desc "Keep long-running coding-agent loops going"
-  homepage "https://github.com/connorburgess/keepgoing-agents"
+  homepage "https://github.com/looptender/looptender"
   # The Sustainable Use License 1.0 is not on the SPDX list. v0.1.5 and every
   # earlier release are Apache-2.0.
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/connorburgess/keepgoing-agents/releases/download/v0.2.0/keepgoing_0.2.0_darwin_arm64.tar.gz"
+      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_darwin_arm64.tar.gz"
       sha256 "8ef393793ccf25ac2ad69edc5cf758d7dc6f0aaf5d25693999533ca7ea6491ae"
     end
     on_intel do
-      url "https://github.com/connorburgess/keepgoing-agents/releases/download/v0.2.0/keepgoing_0.2.0_darwin_amd64.tar.gz"
+      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_darwin_amd64.tar.gz"
       sha256 "43d8bfdf17d6917f15da9c5d65d07bb71dc34d02191bfd4988660fa68cfe66fc"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/connorburgess/keepgoing-agents/releases/download/v0.2.0/keepgoing_0.2.0_linux_arm64.tar.gz"
+      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_linux_arm64.tar.gz"
       sha256 "27bcb7d48b4f1fae5187ac3cab7fbc471c398b7457c979da26f9baa2218d5f77"
     end
     on_intel do
-      url "https://github.com/connorburgess/keepgoing-agents/releases/download/v0.2.0/keepgoing_0.2.0_linux_amd64.tar.gz"
+      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_linux_amd64.tar.gz"
       sha256 "38047ad564adde3de227226356784f077e46bbba75b275070e2779114654eb4c"
     end
   end
