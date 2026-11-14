@@ -1,4 +1,4 @@
-name: Keepgoing formula
+name: Looptender formula
 
 on:
   pull_request:
@@ -23,13 +23,13 @@ jobs:
           persist-credentials: false
       - name: Use the checked-out formula
         run: |
-          tap_dir="$(brew --repository)/Library/Taps/connorburgess/homebrew-tap"
+          tap_dir="$(brew --repository)/Library/Taps/looptender/homebrew-tap"
           test ! -e "$tap_dir"
           mkdir -p "$(dirname "$tap_dir")"
           ln -s "$GITHUB_WORKSPACE" "$tap_dir"
       - name: Install and test the release
         run: |
           uname -m
-          brew install connorburgess/tap/keepgoing
-          brew test connorburgess/tap/keepgoing
+          brew install looptender/tap/keepgoing
+          brew test looptender/tap/keepgoing
           keepgoing version
