@@ -45,7 +45,11 @@ case "$mode" in
   fresh|alias)
     make_tap looptender "$head"
     requested="$canonical"
-    if [[ "$mode" == alias ]]; then requested=looptender/tap/keepgoing; fi
+    if [[ "$mode" == alias ]]; then
+      # Homebrew 7 requires canonical-item trust before resolving an old name.
+      brew trust --formula "$canonical"
+      requested=looptender/tap/keepgoing
+    fi
     brew install "$requested"
     ;;
   upgrade|legacy-upgrade)
@@ -60,12 +64,14 @@ case "$mode" in
       git -C "$repository/Library/Taps/looptender/homebrew-tap" checkout --quiet --detach "$head"
     else
       make_tap looptender "$head"
+      brew trust --formula "$canonical"
       before="$(shasum -a 256 "$old_receipt")"
       # The legacy-owner transition is intentionally explicit, not tap metadata.
       if brew migrate looptender/tap/keepgoing > "$RUNNER_TEMP/migration-refusal.log" 2>&1; then
         echo 'Expected Homebrew to refuse the cross-owner receipt migration.' >&2
         exit 1
       fi
+      cat "$RUNNER_TEMP/migration-refusal.log"
       grep -F 'installed from connorburgess/tap' "$RUNNER_TEMP/migration-refusal.log"
       test "$(shasum -a 256 "$old_receipt")" = "$before"
       test ! -e "$cellar/looptender"
