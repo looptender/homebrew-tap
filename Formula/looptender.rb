@@ -1,9 +1,10 @@
-class Keepgoing < Formula
+class Looptender < Formula
   desc "Keep long-running coding-agent loops going"
   homepage "https://github.com/looptender/looptender"
   # The Sustainable Use License 1.0 is not on the SPDX list. v0.1.5 and every
   # earlier release are Apache-2.0.
   license :cannot_represent
+  revision 1
 
   on_macos do
     on_arm do
@@ -29,12 +30,15 @@ class Keepgoing < Formula
 
   def install
     bin.install "keepgoing"
+    bin.install_symlink "keepgoing" => "looptender"
     # LICENSE and README.md are installed as metafiles.
     prefix.install "LICENSING.md", "THIRD_PARTY_NOTICES", "LICENSES"
   end
 
   test do
     assert_match "v#{version}", shell_output("#{bin}/keepgoing version")
+    assert_match "v#{version}", shell_output("#{bin}/looptender version")
+    assert_equal (bin/"keepgoing").realpath, (bin/"looptender").realpath
     help = shell_output("#{bin}/keepgoing init --help 2>&1")
     assert_match "task-file", help
     assert_match "with-goal", help
