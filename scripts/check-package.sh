@@ -83,12 +83,12 @@ case "$mode" in
 esac
 
 brew test "$canonical"
-check_receipt "$cellar/looptender/0.2.0_1/INSTALL_RECEIPT.json" looptender/tap
+check_receipt "$cellar/looptender/0.3.0/INSTALL_RECEIPT.json" looptender/tap
 package_prefix="$(brew --prefix "$canonical")"
 test -L "$package_prefix/bin/looptender"
 test "$(readlink "$package_prefix/bin/looptender")" = keepgoing
-test "$("$prefix/bin/looptender" version)" = v0.2.0
-test "$("$prefix/bin/keepgoing" version)" = v0.2.0
+test "$("$prefix/bin/looptender" version)" = v0.3.0
+test "$("$prefix/bin/keepgoing" version)" = v0.3.0
 if [[ "$mode" == fresh ]]; then brew audit --strict --online "$canonical"; fi
 brew uninstall --force "$canonical"
 for executable in looptender keepgoing; do

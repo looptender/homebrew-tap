@@ -4,27 +4,26 @@ class Looptender < Formula
   # The Sustainable Use License 1.0 is not on the SPDX list. v0.1.5 and every
   # earlier release are Apache-2.0.
   license :cannot_represent
-  revision 1
 
   on_macos do
     on_arm do
-      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_darwin_arm64.tar.gz"
-      sha256 "8ef393793ccf25ac2ad69edc5cf758d7dc6f0aaf5d25693999533ca7ea6491ae"
+      url "https://github.com/looptender/looptender/releases/download/v0.3.0/keepgoing_0.3.0_darwin_arm64.tar.gz"
+      sha256 "9755e8a66db19e87b14fa1c4eaed2ae33960cf62da93be888d9fa20bd0574cf4"
     end
     on_intel do
-      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_darwin_amd64.tar.gz"
-      sha256 "43d8bfdf17d6917f15da9c5d65d07bb71dc34d02191bfd4988660fa68cfe66fc"
+      url "https://github.com/looptender/looptender/releases/download/v0.3.0/keepgoing_0.3.0_darwin_amd64.tar.gz"
+      sha256 "867b15d2a7628984b2faafbb8850e6f284ab2d6bebf2e5cbc462ad0ad5691d53"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_linux_arm64.tar.gz"
-      sha256 "27bcb7d48b4f1fae5187ac3cab7fbc471c398b7457c979da26f9baa2218d5f77"
+      url "https://github.com/looptender/looptender/releases/download/v0.3.0/keepgoing_0.3.0_linux_arm64.tar.gz"
+      sha256 "5c04f84edf767e8e9cddbc6fd1a26d169df8745d18682ea1fe9570f1286b658b"
     end
     on_intel do
-      url "https://github.com/looptender/looptender/releases/download/v0.2.0/keepgoing_0.2.0_linux_amd64.tar.gz"
-      sha256 "38047ad564adde3de227226356784f077e46bbba75b275070e2779114654eb4c"
+      url "https://github.com/looptender/looptender/releases/download/v0.3.0/keepgoing_0.3.0_linux_amd64.tar.gz"
+      sha256 "8787e5d32431f82679d51e090e5ac9e6b4597e5f61f44a5a0d760e03926eb7da"
     end
   end
 
