@@ -4,7 +4,7 @@
 brew install looptender/tap/looptender
 ```
 
-Installs [looptender](https://github.com/looptender/looptender), which keeps long-running coding-agent loops going. This formula packages the published v0.2.0 archives for macOS and Linux and verifies their SHA-256 checksums. That release contains the `keepgoing` executable; formula revision 1 adds `looptender` as a symlink to the same executable. Both commands report the released version and provide the same behavior.
+Installs [looptender](https://github.com/looptender/looptender), which keeps long-running coding-agent loops going. This formula packages the published v0.3.0 archives for macOS and Linux and verifies their SHA-256 checksums. Those archives contain the `keepgoing` executable, and the formula adds `looptender` as a symlink to the same executable. Both commands report the released version and provide the same behavior.
 
 The old formula name resolves through `formula_renames.json`, which records the same-tap package rename. On Homebrew 7, trust the canonical formula before installing through the old name:
 
@@ -13,7 +13,7 @@ brew trust --formula looptender/tap/looptender
 brew install looptender/tap/keepgoing
 ```
 
-There is no duplicate formula alias entry. The revision increment ensures an existing v0.2.0 installation can receive the executable symlink when upgraded.
+There is no duplicate formula alias entry. Upgrading from v0.2.0 updates to v0.3.0 and keeps the `looptender` executable symlink.
 
 ## Existing installations
 
